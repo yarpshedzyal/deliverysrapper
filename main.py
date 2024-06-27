@@ -1,6 +1,7 @@
 # main.py
 from modules.csv_read_and_classify import classify_order_id
 from modules.scrapper_thestore import scrap_status_thestore
+from modules.scrapper_webstore import track_order_web 
 import pandas as pd 
 
 # income_df = pd.read_csv('income/test1.csv')
@@ -18,5 +19,7 @@ if __name__ == "__main__":
     thestore_orders_ids, webstore_orders_ids = classify_order_id(income_df)
     print(thestore_orders_ids)
     print(scrap_status_thestore(thestore_orders_ids))
+    print(webstore_orders_ids)
+    print(track_order_web(webstore_orders_ids))
     
  
