@@ -58,5 +58,5 @@ def track_order_web(order_numbers: set):
     return result_web_store
 
 
-test_set = {99456487,99452836,99411082,99411082}
-print(track_order_web(test_set))
+# test_set = {99456487,99452836,99411082,99411082}
+# print(track_order_web(test_set))
