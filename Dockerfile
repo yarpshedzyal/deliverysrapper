@@ -24,6 +24,9 @@ RUN wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.co
 # Set the path for ChromeDriver
 ENV PATH=/usr/local/bin/chromedriver:$PATH
 
+# Verify Chromium installation
+RUN chromium --version && chromedriver --version
+
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -33,3 +36,4 @@ COPY . .
 
 # Define the command to run your application
 CMD ["python", "bot.py"]
+
