@@ -5,9 +5,9 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set ChromeDriver version
-ENV CHROMEDRIVER_VERSION=126.0.6478.126
-ENV CHROMIUM_VERSION=126.0.6478.126
+# # Set ChromeDriver version
+# ENV CHROMEDRIVER_VERSION=126.0.6478.126
+# ENV CHROMIUM_VERSION=126.0.6478.126
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -23,15 +23,16 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install Chromium
-RUN wget -q -O /tmp/chromium.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/linux64/chrome-linux64.zip" \
-    && unzip /tmp/chromium.zip -d /opt/chromium/ \
-    && ln -s /opt/chromium/chrome-linux/chrome /usr/bin/chromium \
-    && rm /tmp/chromium.zip
+# install google chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt-get -y update
+RUN apt-get install -y google-chrome-stable
 
-# Download and install ChromeDriver
-RUN wget -q -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip" \
-    && unzip /tmp/chromedriver.zip -d /usr/local/bin/ \
-    && rm /tmp/chromedriver.zip
+# install chromedriver
+RUN apt-get install -yqq unzip
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 # Set the path for ChromeDriver
 ENV PATH=/usr/local/bin/chromedriver:$PATH
