@@ -7,20 +7,21 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     wget \
-    gnupg \
     unzip \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Google Chrome version 114
-RUN wget -O /tmp/google-chrome-stable_114.0.5735.198-1_amd64.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.198-1_amd64.deb && \
-    apt-get update && apt-get install -y /tmp/google-chrome-stable_114.0.5735.198-1_amd64.deb && \
-    rm /tmp/google-chrome-stable_114.0.5735.198-1_amd64.deb
+# Download and install Google Chrome version 126
+RUN wget -O /tmp/chrome-linux64.zip https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chrome-linux64.zip && \
+    unzip /tmp/chrome-linux64.zip -d /opt/ && \
+    mv /opt/chrome-linux64 /opt/google-chrome && \
+    ln -s /opt/google-chrome/chrome /usr/local/bin/google-chrome && \
+    rm /tmp/chrome-linux64.zip
 
-# Download ChromeDriver version 114
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip && \
-    unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
-    rm /tmp/chromedriver.zip
+# Download and install ChromeDriver version 126
+RUN wget -O /tmp/chromedriver-linux64.zip https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip && \
+    unzip /tmp/chromedriver-linux64.zip -d /usr/local/bin/ && \
+    rm /tmp/chromedriver-linux64.zip
 
 # Set display port as an environment variable
 ENV DISPLAY=:99
