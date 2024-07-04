@@ -1,10 +1,15 @@
 # config.py
-
+import os 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 # Path to the ChromeDriver executable
-CHROMEDRIVER_PATH = 'chromedriver-win64\chromedriver.exe'
+
+if os.name == 'nt':  # Windows
+    CHROMEDRIVER_PATH = 'chromedriver-win64\chromedriver.exe'
+else:  # Linux (Docker)
+    CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
+
 
 # Chrome options
 CHROME_OPTIONS = Options()

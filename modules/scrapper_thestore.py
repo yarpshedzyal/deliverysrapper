@@ -6,7 +6,6 @@ from config_chrome import CHROME_OPTIONS, CHROME_SERVICE
 import re
 import time
 
-# Set up options for headless mode
 def create_driver():
     # Initialize the WebDriver with the configuration details
     driver = webdriver.Chrome(service=CHROME_SERVICE, options=CHROME_OPTIONS)
