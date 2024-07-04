@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 if os.name == 'nt':  # Windows
     CHROMEDRIVER_PATH = 'chromedriver-win64\chromedriver.exe'
 else:  # Linux (Docker)
-    CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver-linux64"
+    CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver-linux64/chromedriver"
 
 
 # Chrome options
