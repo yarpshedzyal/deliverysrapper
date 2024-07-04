@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set ChromeDriver version
-ENV CHROMEDRIVER_VERSION=114.0.5735.90
+ENV CHROMEDRIVER_VERSION=126.0.6478.126
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
