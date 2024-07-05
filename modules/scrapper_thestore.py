@@ -1,10 +1,15 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from modules.config_chrome import CHROME_OPTIONS, CHROME_SERVICE
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 import re
 import time
+
+CHROME_SERVICE = Service(ChromeDriverManager().install())
 
 def create_driver():
     # Initialize the WebDriver with the configuration details
