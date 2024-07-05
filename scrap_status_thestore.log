@@ -1,0 +1,62 @@
+2024-07-05 11:47:17,745 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getMe "HTTP/1.1 200 OK"
+2024-07-05 11:47:17,795 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/deleteWebhook "HTTP/1.1 200 OK"
+2024-07-05 11:47:17,797 - telegram.ext.Application - INFO - Application started
+2024-07-05 11:47:27,297 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:47:27,484 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/sendMessage "HTTP/1.1 200 OK"
+2024-07-05 11:47:36,640 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:47:36,788 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getFile "HTTP/1.1 200 OK"
+2024-07-05 11:47:36,829 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot6259933715%3AAAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/documents/file_41.csv "HTTP/1.1 200 OK"
+2024-07-05 11:47:36,903 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/sendMessage "HTTP/1.1 200 OK"
+2024-07-05 11:47:36,910 - modules.scrapper_thestore - INFO - Initializing the WebDriver.
+2024-07-05 11:47:37,941 - modules.scrapper_thestore - INFO - Processing order ID: 1010453315
+2024-07-05 11:47:56,154 - modules.scrapper_thestore - ERROR - An error occurred for order ID 1010453315: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF650581F52+60322]
+	(No symbol) [0x00007FF6504FCEC9]
+	(No symbol) [0x00007FF6503B7EBA]
+	(No symbol) [0x00007FF650407676]
+	(No symbol) [0x00007FF65040773C]
+	(No symbol) [0x00007FF65044E967]
+	(No symbol) [0x00007FF65042C25F]
+	(No symbol) [0x00007FF65044BC80]
+	(No symbol) [0x00007FF65042BFC3]
+	(No symbol) [0x00007FF6503F9617]
+	(No symbol) [0x00007FF6503FA211]
+	GetHandleVerifier [0x00007FF6508994AD+3301629]
+	GetHandleVerifier [0x00007FF6508E36D3+3605283]
+	GetHandleVerifier [0x00007FF6508D9450+3563680]
+	GetHandleVerifier [0x00007FF650634326+790390]
+	(No symbol) [0x00007FF65050750F]
+	(No symbol) [0x00007FF650503404]
+	(No symbol) [0x00007FF650503592]
+	(No symbol) [0x00007FF6504F2F9F]
+	BaseThreadInitThunk [0x00007FFC6AC4257D+29]
+	RtlUserThreadStart [0x00007FFC6BF6AF28+40]
+
+2024-07-05 11:47:56,247 - modules.scrapper_thestore - ERROR - Screenshot saved to screenshots/order_1010453315_20240705_114756.png
+2024-07-05 11:48:01,250 - modules.scrapper_thestore - INFO - Order done: 1/9
+2024-07-05 11:48:01,250 - modules.scrapper_thestore - INFO - Processing order ID: 1010526533
+2024-07-05 11:48:09,883 - modules.scrapper_thestore - INFO - Order done: 2/9
+2024-07-05 11:48:09,883 - modules.scrapper_thestore - INFO - Processing order ID: 1010421383
+2024-07-05 11:48:18,362 - modules.scrapper_thestore - INFO - Order done: 3/9
+2024-07-05 11:48:18,362 - modules.scrapper_thestore - INFO - Processing order ID: 1010447527
+2024-07-05 11:48:26,151 - modules.scrapper_thestore - INFO - Order done: 4/9
+2024-07-05 11:48:26,151 - modules.scrapper_thestore - INFO - Processing order ID: 1010421489
+2024-07-05 11:48:34,024 - modules.scrapper_thestore - INFO - Order done: 5/9
+2024-07-05 11:48:34,024 - modules.scrapper_thestore - INFO - Processing order ID: 1010457715
+2024-07-05 11:48:42,494 - modules.scrapper_thestore - INFO - Order done: 6/9
+2024-07-05 11:48:42,495 - modules.scrapper_thestore - INFO - Processing order ID: 1010590295
+2024-07-05 11:48:50,754 - modules.scrapper_thestore - INFO - Order done: 7/9
+2024-07-05 11:48:50,754 - modules.scrapper_thestore - INFO - Processing order ID: 1010430841
+2024-07-05 11:48:59,120 - modules.scrapper_thestore - INFO - Order done: 8/9
+2024-07-05 11:48:59,120 - modules.scrapper_thestore - INFO - Processing order ID: 1010590301
+2024-07-05 11:49:06,951 - modules.scrapper_thestore - INFO - Order done: 9/9
+2024-07-05 11:49:11,262 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:49:11,449 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/sendMessage "HTTP/1.1 200 OK"
+2024-07-05 11:49:21,303 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:49:31,346 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:49:41,405 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:49:51,458 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:01,505 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:11,552 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:21,602 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
