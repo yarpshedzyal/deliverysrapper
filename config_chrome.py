@@ -18,7 +18,7 @@ CHROME_OPTIONS.add_argument('--disable-gpu')
 CHROME_OPTIONS.add_argument('--window-size=1920,1080')
 CHROME_OPTIONS.add_argument('--no-sandbox')
 CHROME_OPTIONS.add_argument('--disable-dev-shm-usage')
-CHROME_OPTIONS.add_argument('--log-level=0')  # Suppress console messages
+CHROME_OPTIONS.add_argument('--log-level=3')  # Suppress console messages
 
 
 # Chrome service
