@@ -5,9 +5,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from config_chrome import CHROME_OPTIONS, CHROME_SERVICE
 import re
 import time
+import logging
+from datetime import datetime
+import os
+
+# Configure logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler("scrap_status_thestore.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 def create_driver():
-    # Initialize the WebDriver with the configuration details
+    logger.info("Initializing the WebDriver.")
     driver = webdriver.Chrome(service=CHROME_SERVICE, options=CHROME_OPTIONS)
     return driver
 
@@ -19,18 +33,19 @@ def extract_status(text):
     else:
         return 'Unknown'
 
-def extract_table_text(table):
-
-    pass
-
 def scrap_status_thestore(the_store_set: set):
     driver = create_driver()
     result_the_store = {}
     number_of_orders = len(the_store_set)
     counter_for_done = 0
+    screenshots = []
+
+    if not os.path.exists('screenshots'):
+        os.makedirs('screenshots')
 
     for order_id in the_store_set:
         try:
+            logger.info(f"Processing order ID: {order_id}")
             driver.get('https://www.therestaurantstore.com/login')
 
             # Wait for the email field to be present
@@ -55,7 +70,7 @@ def scrap_status_thestore(the_store_set: set):
                 EC.presence_of_element_located((By.CSS_SELECTOR, '#main > div:nth-child(4) > div > div:nth-child(1) > div > div > div.w-full.xl\:w-72.lg\:mr-6.xl\:mr-12 > div > ul:nth-child(1) > li:nth-child(3)'))
             )
 
-            # Extraction of status info 
+            # Extraction of status info
             status_element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '#main > div:nth-child(4) > div > div:nth-child(1) > div > div > div.w-full.xl\:w-72.lg\:mr-6.xl\:mr-12 > div > ul:nth-child(1) > li:nth-child(3)'))
             )
@@ -65,18 +80,16 @@ def scrap_status_thestore(the_store_set: set):
             # Classification of orders
             if status_info == 'Shipped':
                 table = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, '#simple-tracking-details > div > div > table > tbody'))
-            )
+                    EC.presence_of_element_located((By.CSS_SELECTOR, '#simple-tracking-details > div > div > table > tbody'))
+                )
                 rows = table.find_elements(By.TAG_NAME, 'tr')
                 table_data = []
                 for row in rows:
-                    # Extract data from each cell in the row
                     date = row.find_element(By.CSS_SELECTOR, 'td:nth-child(1) span').text.strip()
                     carrier = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)').text.strip()
                     tracking_number = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)').text.strip()
                     tracking_link = row.find_element(By.CSS_SELECTOR, 'td:nth-child(4) a').get_attribute('href')
 
-                    # Append the extracted data to the list
                     table_data.append({
                         'Date': date,
                         'Carrier': carrier,
@@ -85,20 +98,21 @@ def scrap_status_thestore(the_store_set: set):
                     })
             elif status_info == 'Processing':
                 table_data = 'None'
-                
 
             result_the_store[order_id] = [status_info, table_data]
 
         except Exception as e:
-            print(f"An error occurred for order ID {order_id}: {e}")
+            logger.error(f"An error occurred for order ID {order_id}: {e}")
+            screenshot_path = f"screenshots/order_{order_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+            driver.save_screenshot(screenshot_path)
+            logger.error(f"Screenshot saved to {screenshot_path}")
+            screenshots.append(screenshot_path)
             result_the_store[order_id] = ['Error']
 
         finally:
             time.sleep(5)
             counter_for_done += 1
-            print(f'Order done: {counter_for_done}/{number_of_orders}')
+            logger.info(f'Order done: {counter_for_done}/{number_of_orders}')
 
     driver.quit()
-    return result_the_store
-
-
+    return result_the_store, screenshots
