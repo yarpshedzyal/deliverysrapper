@@ -36,7 +36,7 @@ async def handle_file(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text(f"An error occurred: {e}")
 
 def main() -> None:
-    bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+    bot_token = os.getenv("6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng")
     application = Application.builder().token(bot_token).build()
 
     application.add_handler(CommandHandler("start", start))
