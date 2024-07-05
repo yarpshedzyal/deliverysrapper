@@ -60,3 +60,6 @@ Stacktrace:
 2024-07-05 11:50:01,505 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
 2024-07-05 11:50:11,552 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
 2024-07-05 11:50:21,602 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:31,651 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:41,728 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
+2024-07-05 11:50:51,776 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot6259933715:AAFUWA4AEhTQJEd1yd1kHr1JiYkRr75I1ng/getUpdates "HTTP/1.1 200 OK"
