@@ -32,36 +32,39 @@ def scrap_status_thestore(the_store_set: set):
     for order_id in the_store_set:
         try:
             driver.get('https://www.therestaurantstore.com/login')
-
+            print('came to titel')
             # Wait for the email field to be present
             email_field = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.ID, 'order-email'))
             )
+            print('order-email loaded')
             order_number_field = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.ID, 'order-number'))
             )
+            print('order-number loaded')
 
             email_field.send_keys('alina.troian.proton@gmail.com')
             order_number_field.send_keys(str(order_id))
-
+            print('keys sended')
             # Wait for the submit button to be clickable
             submit_button = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, '#track-orders-form > div > div > div > button'))
             )
             submit_button.click()
-
+            print('clicked button')
             # Verify if the current page is the order status page
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '#main > div:nth-child(4) > div > div:nth-child(1) > div > div > div.w-full.xl\:w-72.lg\:mr-6.xl\:mr-12 > div > ul:nth-child(1) > li:nth-child(3)'))
             )
-
+            print(driver.current_url)
             # Extraction of status info 
             status_element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '#main > div:nth-child(4) > div > div:nth-child(1) > div > div > div.w-full.xl\:w-72.lg\:mr-6.xl\:mr-12 > div > ul:nth-child(1) > li:nth-child(3)'))
             )
+            print('fields loaded')
             status_html = status_element.get_attribute('outerHTML')
             status_info = extract_status(status_html)
-
+            
             # Classification of orders
             if status_info == 'Shipped':
                 table = WebDriverWait(driver, 10).until(
