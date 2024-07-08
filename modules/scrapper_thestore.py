@@ -109,5 +109,5 @@ def scrap_status_thestore(the_store_set: set):
     return result_the_store
 
 
-test_set = {'1010526533', '1010590295', '1010447527'}
-print(scrap_status_thestore(test_set))
+# test_set = {'1010526533', '1010590295', '1010447527'}
+# print(scrap_status_thestore(test_set))
