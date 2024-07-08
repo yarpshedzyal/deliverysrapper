@@ -28,7 +28,7 @@ def track_order_web(order_numbers: set):
                 tracker_web = ''
                 if order_data == 'Processing':
                     tracker_web = 'None'
-                elif order_data == 'Shipped' or order_data == 'On The Way':
+                elif order_data == 'Shipped' or order_data == 'On The Way' or order_data == 'Partially Shipped':
                     table = soup.select_one('#orderTracking > div > div.order__tracking-content.clearfix > div.order__packages-container > table')
                     if table:
                         print(f"Table found for order {order_number}.")

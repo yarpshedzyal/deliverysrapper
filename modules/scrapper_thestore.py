@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from modules.config_chrome import CHROME_OPTIONS, CHROME_SERVICE
+from config_chrome import CHROME_OPTIONS, CHROME_SERVICE
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import re
@@ -109,5 +109,5 @@ def scrap_status_thestore(the_store_set: set):
     return result_the_store
 
 
-# test_set = {'404530005726', '404529981052', '404211150990'}
-# print(scrap_status_thestore(test_set))
+test_set = {'1010526533', '1010590295', '1010447527'}
+print(scrap_status_thestore(test_set))

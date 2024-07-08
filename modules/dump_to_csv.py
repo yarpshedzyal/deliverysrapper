@@ -13,14 +13,16 @@ def dump_to_csv(data, file_path):
                     row = {
                         'order_number': order_number,
                         'order_status': order_status,
-                        'tracker_number': shipment.get('Tracking Number', 'N/A')
+                        'tracker_number': shipment.get('Tracking Number', 'N/A'),
+                        'carrier': shipment.get('Carrier', 'N/A')  # Add carrier to the row
                     }
                     rows.append(row)
             else:
                 row = {
                     'order_number': order_number,
                     'order_status': order_status,
-                    'tracker_number': 'N/A'
+                    'tracker_number': 'N/A',
+                    'carrier': 'N/A'  # Add carrier to the row
                 }
                 rows.append(row)
         else:
@@ -28,14 +30,17 @@ def dump_to_csv(data, file_path):
             row = {
                 'order_number': order_number,
                 'order_status': order_status,
-                'tracker_number': tracker_number
+                'tracker_number': tracker_number,
+                'carrier': 'N/A'  # Add carrier to the row
             }
             rows.append(row)
 
     # Create a DataFrame from the rows
-    df = pd.DataFrame(rows, columns=['order_number', 'order_status', 'tracker_number'])
+    df = pd.DataFrame(rows, columns=['order_number', 'order_status', 'tracker_number', 'carrier'])
     
     # Write the DataFrame to a CSV file
     df.to_csv(file_path, index=False)
 
     print(f"Data successfully written to {file_path}")
+
+
