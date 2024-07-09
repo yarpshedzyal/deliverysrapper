@@ -54,9 +54,12 @@ def track_order_web(order_numbers: set):
             order_data = 'Error'
             tracker_web = 'Error'
 
-        result_web_store[order_number] = (order_data, tracker_web)
+        # Count the number of elements with the given selector
+        elements = soup.select('#orderTracking > div > div:nth-child(2)')
+        multitrack = 'Yes' if len(elements) > 1 else 'No'
+
+        result_web_store[order_number] = (order_data, tracker_web, multitrack)
     return result_web_store
 
-
-test_set = {99456487,99452836,99411082,99411082, 99776164, 99750667}
+test_set = {99456487, 99452836, 99411082, 99776164, 99750667}
 print(track_order_web(test_set))
