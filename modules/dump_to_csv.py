@@ -1,31 +1,4 @@
 import pandas as pd
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-
-# Function to read Google Sheet and form the carrier dictionary
-def get_proper_carriers(sheet_url, sheet_name):
-    # Define the scope and authenticate
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name('modules\sheetforcarriers-e040c5a77aaa.json', scope)
-    client = gspread.authorize(creds)
-
-    # Open the Google Sheet
-    sheet = client.open_by_url(sheet_url).worksheet(sheet_name)
-    
-    # Get all data from the sheet
-    data = sheet.get_all_values()
-    
-    # Form the carrier dictionary
-    carrier_dict = {}
-    for row in data[1:]:  # Skip header row
-        name = row[0]
-        variations = row[1:]
-        for variation in variations:
-            if variation:
-                carrier_dict[variation] = name
-        carrier_dict[name] = name  # Add the name itself as a proper carrier
-    
-    return carrier_dict
 
 def dump_to_csv(data, file_path, carrier_dict):
     # Create a list to hold rows of data
@@ -85,5 +58,3 @@ def dump_to_csv(data, file_path, carrier_dict):
     df.to_csv(file_path, index=False)
 
     print(f"Data successfully written to {file_path}")
-
-

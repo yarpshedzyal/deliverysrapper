@@ -4,7 +4,8 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from modules.csv_read_and_classify import classify_order_id
 from modules.scrapper_thestore import scrap_status_thestore
 from modules.scrapper_webstore import track_order_web
-from modules.dump_to_csv import dump_to_csv, get_proper_carriers
+from modules.dump_to_csv import dump_to_csv
+from modules.read_carriers import get_proper_carriers_from_csv
 import pandas as pd
 
 # Enable logging
@@ -20,16 +21,12 @@ async def start(update: Update, context: CallbackContext) -> None:
 async def handle_file(update: Update, context: CallbackContext) -> None:
     file = await update.message.document.get_file()
     await file.download_to_drive('input.csv')
-    await update.message.reply_text('File received. Processing...')
+    await update.message.reply_text('Order file received. Processing...')
 
     # Process the file
     try:
-        # Define your Google Sheet URL and Sheet name
-        sheet_url = 'https://docs.google.com/spreadsheets/d/1hKugR3oiYXIYvsY9OclcuXa6HyLvV905ut962a2pNio/edit?gid=0#gid=0'
-        sheet_name = 'Sheet1'
-
-        # Get the carrier dictionary from Google Sheet
-        carrier_dict = get_proper_carriers(sheet_url, sheet_name)
+        # Load the carrier dictionary from the CSV file each time a new file is sent
+        carrier_dict = get_proper_carriers_from_csv()
 
         income_df = pd.read_csv('input.csv')
         thestore_orders_ids, webstore_orders_ids = classify_order_id(income_df)
