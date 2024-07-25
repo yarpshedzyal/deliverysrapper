@@ -4,9 +4,8 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from modules.csv_read_and_classify import classify_order_id
 from modules.scrapper_thestore import scrap_status_thestore
 from modules.scrapper_webstore import track_order_web
-from modules.dump_to_csv import dump_to_csv
+from modules.dump_to_csv import dump_to_csv, get_proper_carriers
 import pandas as pd
-
 
 # Enable logging
 logging.basicConfig(
@@ -25,18 +24,28 @@ async def handle_file(update: Update, context: CallbackContext) -> None:
 
     # Process the file
     try:
+        # Define your Google Sheet URL and Sheet name
+        sheet_url = 'https://docs.google.com/spreadsheets/d/1hKugR3oiYXIYvsY9OclcuXa6HyLvV905ut962a2pNio/edit?gid=0#gid=0'
+        sheet_name = 'Sheet1'
+
+        # Get the carrier dictionary from Google Sheet
+        carrier_dict = get_proper_carriers(sheet_url, sheet_name)
+
         income_df = pd.read_csv('input.csv')
         thestore_orders_ids, webstore_orders_ids = classify_order_id(income_df)
         the_results = scrap_status_thestore(thestore_orders_ids)
         web_results = track_order_web(webstore_orders_ids) or {}
         all_results = {**the_results, **web_results}
-        dump_to_csv(all_results, 'output/orders.csv')
+
+        # Use the updated dump_to_csv function with carrier_dict
+        dump_to_csv(all_results, 'output/orders.csv', carrier_dict)
 
         # Send the result file back to the user
         with open('output/orders.csv', 'rb') as f:
             await update.message.reply_document(f)
     except Exception as e:
         await update.message.reply_text(f"An error occurred: {e}")
+        logger.error(f"Error processing file: {e}")
 
 def main() -> None:
     # Create the Application and pass it your bot's token.

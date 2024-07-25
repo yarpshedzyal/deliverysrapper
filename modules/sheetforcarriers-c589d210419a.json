@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sheetforcarriers",
+  "private_key_id": "c589d210419a59a86df6818d32e457e0b2ad7ae3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCUxiCbmwvg9kV8\n/XkCcp6zJEwWioa7RM0Avlry3lLX7fcp9dx1o4nTLe61rEKswBFRSPRcEUdRvJnF\no4QBhOJd2DRYytQD68LAblBLgTTBMfbouEcjBYo7XUEr7MiD1mfCCspQA3OhFl+O\n9wNIRTcnkwKbnFWY8adCb4bD0LkBqoclKe1foQKr7ViyMhhd+VGGSWNNKi1PP37o\nKK9P4uLHX0YKR8tv6oOuCewItMTz85z1Yw2bFqrhOUHdXMJp9+NbptOhEzitJJlW\npe2RYn/KmnIUPyetWShordCLwkof7VhmaXuQJzXdOrx94M2DofvEbDHYYtkUR5W0\n8uH07T5PAgMBAAECggEAAiXzleug5J20a9VJKF+Oqm2NamHpB3k7MJXkavoKM4is\nd1RP26RXOs/AplTsyDZ5yYpbz5yG7XI4vOGF6B5gGmojJLPBE1FrMtYk81d+ndo3\n2NfDBzQZm+PWgL40OFsh4mu/d3T6osqCP2aSYI/HTRtSqqaQ7IVzcdfPGAgX3niZ\n7nmVbefmSnDC6ksGlppPx+XqpxHJmqRJp5jnAf3T5Jv71xlrSQX+ZQkSL2yHg/5y\nFhQ0VPI2oaYNtSTFv/GIBuoqIvsl08qqOEdZI3BnXZBmSXtqz2k1ubldha5lRK0P\noOoA6ctrab0m5aM+Ayd/2HGYU34sD4nIqRgJh6f3mQKBgQDKjd8c+v2r/I1Uj3/a\nClXJqlWYA755FQ+SF/2nzeDZ5ns5fXfOWwyPKY19a7/u0SA9QMtOpwdz6tGgbF6v\ni8toBzhko7PdSNYTSQjmFaj+UNOZTd4cJKFZgNZTTh2P3LscDQeA0FAX7Sip9Xi1\n+HoVIPEZc/URfd9i0zWLhYpNSwKBgQC8B4IGi2nYcQ07TnIpsACqVqs8jB6axc28\nsS2pN0yjfxY+ZJ2ReeABlaxYHczQ8d9YWYesm4r0of+QtMM4RrKqo9JUtcnnFedc\n8yEcApD7IJHGgHwytybGFip4uDXUNnuk3azelHeofX0dlz9WpbVhvVTVjPY9yr/K\n8iSBtfKEjQKBgG3+juuI7RppYkJKTu6T8DQ8OJD9b4EHS9ZVCt0GMxWBUOdOWDIK\nRY60zO4QBkFk9THuLrl+gNCU8tNAJkcEDihmy1vzfegr9nywi5GOr5+zOsUkgPod\ndjVJfpnscKdAAafg93MfLG9hzVRGRg/jaEBzDBp7Wtjt1tIuygQDN7BzAoGBAJdw\ntJjw0F8zLqUFmY1Z5C9Nfr1VXZDqn7nKOiyADYnhYdj+0KnKr1CXbCfMWJoxNOHD\nujKbVF+T2nKCJHm+90fYih8QC33DdoS2jYQxzPN2V/K4qU9vlBsW3z47n588AnnW\n0NS0X2ulJpAesTToYh5Gj30v+2PpWG/sdtrB4IJBAoGAI7JXFElEJCuLPnTtbUmX\nwciqONwMfr09XxBDYy3voNSOGfM5XRXs4DnYuhDxtSsv7OLeYyHn1grTaiozzoi2\n8bgmSeymH4pJr3NeFi+wWzoUO4AjmFkLTjq4ecs5NLjYTV6J3xxaD28VeFAmpsBf\nsKlYt34bVmQp5KvV/1KJsi8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "bot-tg-alina@sheetforcarriers.iam.gserviceaccount.com",
+  "client_id": "114868992108155147262",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bot-tg-alina%40sheetforcarriers.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
