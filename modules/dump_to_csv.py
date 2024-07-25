@@ -6,7 +6,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 def get_proper_carriers(sheet_url, sheet_name):
     # Define the scope and authenticate
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name('modules\sheetforcarriers-c589d210419a.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('modules\sheetforcarriers-e040c5a77aaa.json', scope)
     client = gspread.authorize(creds)
 
     # Open the Google Sheet
