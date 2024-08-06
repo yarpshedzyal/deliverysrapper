@@ -70,28 +70,33 @@ def scrap_status_thestore(the_store_set: set):
             status_info = extract_status(status_html)
             
             # Classification of orders
-            if status_info == 'Shipped':
-                table = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, '#simple-tracking-details > div > div > table > tbody'))
-            )
-                rows = table.find_elements(By.TAG_NAME, 'tr')
-                table_data = []
-                for row in rows:
-                    # Extract data from each cell in the row
-                    date = row.find_element(By.CSS_SELECTOR, 'td:nth-child(1) span').text.strip()
-                    carrier = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)').text.strip()
-                    tracking_number = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)').text.strip()
-                    tracking_link = row.find_element(By.CSS_SELECTOR, 'td:nth-child(4) a').get_attribute('href')
+            if status_info == 'Shipped' or status_info == 'Processing':
+                try:
+                    table = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, '#simple-tracking-details > div > div > table > tbody'))
+                    )
+                    rows = table.find_elements(By.TAG_NAME, 'tr')
+                    table_data = []
+                    for row in rows:
+                        # Extract data from each cell in the row
+                        date = row.find_element(By.CSS_SELECTOR, 'td:nth-child(1) span').text.strip()
+                        carrier = row.find_element(By.CSS_SELECTOR, 'td:nth-child(2)').text.strip()
+                        tracking_number = row.find_element(By.CSS_SELECTOR, 'td:nth-child(3)').text.strip()
+                        tracking_link = row.find_element(By.CSS_SELECTOR, 'td:nth-child(4) a').get_attribute('href')
 
-                    # Append the extracted data to the list
-                    table_data.append({
-                        'Date': date,
-                        'Carrier': carrier,
-                        'Tracking Number': tracking_number,
-                        'Tracking Link': tracking_link
-                    })
-            elif status_info == 'Processing':
+                        # Append the extracted data to the list
+                        table_data.append({
+                            'Date': date,
+                            'Carrier': carrier,
+                            'Tracking Number': tracking_number,
+                            'Tracking Link': tracking_link
+                        })
+                except TimeoutError:
+                    # Handle case where table is not found
+                    table_data = 'None'
+            else:
                 table_data = 'None'
+
                 
 
             result_the_store[order_id] = [status_info, table_data]
